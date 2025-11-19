@@ -8,6 +8,7 @@
 
 **详细教程和SwanLab观测结果链接如下：**
 
+[![知乎](https://img.shields.io/static/v1?label=📖&message=教程&color=blue)](https://zhuanlan.zhihu.com/p/1974529769119962764)
 [![SwanLab](https://img.shields.io/static/v1?label=📈&message=SwanLab&color=green)](https://swanlab.cn/@LiXinYu/sudoku-grpo-qwen2.5/overview)
 
 ## ⚙️环境安装
