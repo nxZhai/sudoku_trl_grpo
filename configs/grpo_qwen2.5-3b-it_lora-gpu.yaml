@@ -1,6 +1,6 @@
 # Model arguments
-model_name_or_path: "/root/autodl-tmp/models/qwen/qwen2.5-3b-it"
-output_dir: "/root/autodl-tmp/models/outputs/grpo_qwen2.5-3b-it_lora"
+model_name_or_path: "Qwen/Qwen2.5-7B-Instruct"
+output_dir: "./grpo_qwen2.5-3b-it_lora"
 # lora
 use_peft: true
 lora_r: 8

@@ -71,6 +71,7 @@ SUDOKU_FORMAT = "[[{},{},{},{}],\n[{},{},{},{}],\n[{},{},{},{}],\n[{},{},{},{}]]
 # 奖励函数
 ################################################
 
+
 ## 格式准确奖励
 def format_reward_func(completions, prompts, **kwargs):
     """Reward function that checks if the completion has a specific format."""
@@ -121,6 +122,7 @@ def len_reward_func(completions, **kwargs):
 
     return rewards
 
+
 ## 问题描述准确奖励
 def question_match_reward(completions, question, **kwargs):
     pattern = r"^<think>[\s\S]*?</think>\s*<answer>([\s\S]*?)</answer>$"
@@ -146,6 +148,7 @@ def question_match_reward(completions, question, **kwargs):
     print("问题描述准确奖励：", rewards[0])
 
     return rewards
+
 
 ## 数独行准确评估
 def ans_row_reward(completions, answer, **kwargs):
@@ -175,6 +178,7 @@ def ans_row_reward(completions, answer, **kwargs):
 
     return rewards
 
+
 ## 数独列准确评估
 def ans_col_reward(completions, answer, **kwargs):
     pattern = r"^<think>[\s\S]*?</think>\s*<answer>([\s\S]*?)</answer>$"
@@ -203,6 +207,7 @@ def ans_col_reward(completions, answer, **kwargs):
     print("数独列准确评估：", rewards[0])
 
     return rewards
+
 
 ## 数独块准确评估
 def ans_block_reward(completions, answer, **kwargs):
@@ -251,7 +256,11 @@ def grpo_function(
     )
     sudoku_dataset = sudoku_dataset.filter(lambda x: x["label"] == "simple")
     sudoku_dataset = sudoku_dataset.shuffle(seed=42)  # 固定seed打乱
-    train_dataset,eval_dataset = sudoku_dataset["train"].train_test_split(test_size=0.1, seed=42)
+    # train_dataset,eval_dataset = sudoku_dataset["train"].train_test_split(test_size=0.1, seed=42)
+
+    split_dataset = sudoku_dataset["train"].train_test_split(test_size=0.1, seed=42)
+    train_dataset = split_dataset["train"]
+    eval_dataset = split_dataset["test"]
 
     def make_conversation(example):
         sudo_str = SUDOKU_FORMAT.format(*[c for c in example["question"]])

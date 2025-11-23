@@ -16,3 +16,5 @@ run.pid
 
 # test file
 *.ipynb
+
+grpo_qwen2.5-3b-it_lora/
