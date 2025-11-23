@@ -1,0 +1,18 @@
+{
+    "mean_scores": {
+        "format_mean": 0.8600000000000001,
+        "question_mean": 0.8469444444444443,
+        "row_mean": 0.8470833333333331,
+        "col_mean": 0.7983333333333333,
+        "block_mean": 0.8116666666666665
+    },
+    "num_score": {
+        "prompt_score": 0.86,
+        "question_score": 0.66,
+        "row_score": 0.7166666666666667,
+        "col_score": 0.43,
+        "block_score": 0.5066666666666667,
+        "total_score": 0.42,
+        "format_exclude": 0.4883720930232558
+    }
+}
