@@ -1,5 +1,25 @@
 # sudoku_trl_grpo
 
+## Update 1229
+
+This repository contains my reproduction of SwanLab’s GRPO example project. 
+
+The resulting training checkpoint has been uploaded to Hugging Face and is available [here](https://huggingface.co/Oliver1515/Qwen-7B-chat-sudoku-grpo-steps500).
+
+Training was conducted on 
+
+- 4× NVIDIA A800 GPUs
+- approximately 7.5 hours,
+- 500 steps
+- `Qwen/Qwen2.5-7B-Instruct`
+
+### Reward Curve
+
+
+<img width="500" height="500" alt="SwanLab-Chart" src="https://github.com/user-attachments/assets/5d4ac6e5-6c54-48d1-964e-e4a5deb77f9f" />
+
+
+
 ## 📖简介
 
 最近在补充NLP任务领域的GRPO强化学习训练任务，我们希望用GRPO实现一个简单的数独游戏。
