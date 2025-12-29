@@ -1,0 +1,49 @@
+# Model arguments
+model_name_or_path: "Qwen/Qwen2.5-7B-Instruct"
+output_dir: "./grpo_qwen2.5-7b-it_lora"
+# lora
+use_peft: true
+lora_r: 8
+lora_alpha: 16
+lora_dropout: 0.0
+lora_target_modules: ["all-linear"]
+
+# Dataset arguments
+dataset_id_or_path: "json"
+data_files: "./data/sudoku_4x4_qa.jsonl"
+
+# Training arguments
+seed: 2025
+bf16: true
+fp16: false
+max_steps: 500
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 3
+gradient_checkpointing: false
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+max_grad_norm: 0.2
+learning_rate: 3.0e-5 # 1.0e-6 as in the deepseek math paper 5-e7 from https://hijkzzz.notion.site/unraveling-rlhf-and-its-variants-engineering-insights#147d9a33ecc9806090f3d5c749d31f05
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+# GRPO specific parameters
+beta: 0.04 # 0.04 as in the deepseek math paper 0.001 from https://hijkzzz.notion.site/unraveling-rlhf-and-its-variants-engineering-insights#147d9a33ecc9806090f3d5c749d31f05
+max_prompt_length: 400
+max_completion_length: 1648 # 2048-400
+num_generations: 6
+use_vllm: false
+vllm_mode: server
+# vllm_server_base_url: "http://localhost:8000"
+# do_eval: true
+eval_strategy: "no"
+per_device_eval_batch_size: 16
+eval_steps: 50
+
+# Logging arguments
+report_to: swanlab
+run_name: grpo_qwen2.5-3B-it-lora-gpuvllm
+logging_strategy: steps
+logging_steps: 1
+save_strategy: "steps"
+save_steps: 100
+save_total_limit: 1
